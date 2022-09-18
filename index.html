@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Taxifare Calculation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+
+            background-color: blue;
+            height: 400px;
+            width: 400px;
+            border: 2px solid white;
+            border-radius: 10px solid white;
+
+        }
+
+        #add {
+            background-color: blue;
+            border: 1px solid white;
+            border-radius: 5px;
+            width: 80%;
+            height: 50px;
+            color: white;
+            font-size: 2 rem;
+            margin: 9.5%;
+        }
+
+        input {
+            display: flex;
+            border: 1px solid red;
+            border-radius: 5px;
+            width: 80%;
+            height: 50px;
+            margin: 9.5%;
+
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        .res{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+        }
+        
+
+        textarea {
+            height: 30%;
+            width: 90%;
+            margin-top: 10px;
+            border: 1px solid red;
+            border-radius: 10px;
+        }
+
+        button {
+            height: 50px;
+            width: 90%;
+            border-radius: 10px;
+            font-size: 20px;
+            margin: 10px;
+            color: blue;
+        }
+
+        textarea::placeholder {
+            font-size: 16px;
+        }
+
+        .deactive {
+            display: none;
+        }
+
+        #kms{
+            font-size: 25px;
+        }
+
+        #fare{
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calc">
+        <h1>TAXIFARE CALCULATION</h1>
+
+        <div class="box">
+            <input type="number" id="start" placeholder="Start" value=" "><br>
+
+            <input type="number" id="end" placeholder="End"><br>
+            <button type="submit" id="add" onclick=myFunction()>Calculate Fare</button><br>
+        </div>
+    </div>
+
+    <div id="res" class="deactive res">
+        <h1>Taxi Service</h1>
+        <div class="box">
+            <div id="kms"></div>
+            <div id="fare"></div>
+            <textarea placeholder="Write A message to us If you Like....."></textarea>
+            <button type="Submit">Submit</button>
+            <h2>Thank You</h2>
+        </div>
+    </div>
+    
+
+    <script>
+
+
+
+        function myFunction() {
+            let start = document.getElementById("start");
+            let end = document.getElementById("end");
+            let result = parseInt(end.value) - parseInt(start.value);
+            document.getElementById("kms").innerHTML = "Total Visisted In K.M. Is" + " " + result;
+
+            if (result <= 5) {
+                totalmoney = result * 5;
+            } else if (result <= 10) {
+                totalmoney = result * 4;
+            } else {
+                totalmoney = result * 3;
+            }
+            document.getElementById('fare').innerHTML = "Total fare is " + " " + totalmoney;
+
+            let calc = document.querySelector(".calc");
+            let res = document.querySelector(".res");
+
+            if (res.classList.contains('deactive')) {
+                res.classList.remove('deactive')
+                calc.classList.add('deactive')
+            } else {
+                res.classList.add('deactive');
+                calc.classList.remove('deactive')
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
